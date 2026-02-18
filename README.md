@@ -1,4 +1,4 @@
-# FBLA-Introtoprogramming-25-26-Pet-Simulator
+# FBLA-Introtoprogramming-25-26-Pet-Simulator - _VirtuePet_
 
 Welcome to my Pet Simulator for Introduction to Programming in the FBLA 2025/2026 season!
 
