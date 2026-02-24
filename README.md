@@ -1,10 +1,12 @@
 # FBLA-Introtoprogramming-25-26-Pet-Simulator - _VirtuPet_
 
-Welcome to my Pet Simulator for Introduction to Programming in the FBLA 2025/2026 season!
+Welcome to my Pet Simulator for Introduction to Programming in the FBLA High School Division 2025/2026 season!
 
-__"I believe that EVERYONE should have the ability to own a pet in their lifetime. 
+This project is a python-based game to educate future pet-owners on how to care for a real life pet.
+
+_"I believe that EVERYONE should have the ability to own a pet in their lifetime. 
 To own a pet, you must first become responsible, that’s why I created VirtuPet." 
-- Ishaan Kuruwa__
+- Ishaan Kuruwa_
 
 **My Vision**:
 - Target
