@@ -36,5 +36,8 @@ To own a pet, you must first become responsible, that’s why I created VirtuPet
    +/- to each move
    Choose wisely
 
-To run my game, please start by downloading the Images folder labeled "IntrotoProgramming25-26Images".
-Then please download the "Game" file or copy and paste the code into your code environment.
+Play the Game:
+- Please start by downloading the Images folder labeled "IntrotoProgramming25-26Images".
+- Then, Please download all libraries in "Libraries_Used.md" using "pip install" or other commands.
+- Finally, please download the "Game" file or copy and paste the code into your code environment.
+- You are ready to play!
