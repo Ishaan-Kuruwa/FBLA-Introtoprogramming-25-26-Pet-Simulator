@@ -26,4 +26,5 @@ https://en.ac-illust.com/clip-art/25448040/hand-drawn-collection-of-hamster-emot
 Vexels. “Snake Emoji Set Vector Download.” Vexels.com, 2019,
 www.vexels.com/vectors/preview/169577/snake-emoji-set. Accessed 24 Feb. 2026.
 
+***Used GNU Public License for "LICENSE" File**
 ***Libraries used are in their own seperate file**
