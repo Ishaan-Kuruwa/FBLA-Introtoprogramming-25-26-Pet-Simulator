@@ -2,10 +2,6 @@
 # Importing random library for later use of randomized choices
 import random
 
-# Importing Matplotlib library to display images
-import matplotlib.pyplot as plt
-import matplotlib.image as mpimg
-
 # Importing os, time for a clear UI
 import os
 import time
@@ -205,6 +201,7 @@ class Pet():
     plt.imshow (pet_image)
     plt.title (f"Your Pet is {pet.mood}. Please click 'X' to continue!")
     plt.show()
+    clear_screen()
 
 # Define class "Game" to hold all functions containing user's game
 class Game():
@@ -231,8 +228,51 @@ class Game():
     # Define boolean "health_care" to check if player has health care to access in class
     self.health_care = False
 
+  # Define "Instructions" function to teach user how to play game
+  def Instructions():
+    clear_screen()
+    print ("Welcome to Virtupet!")
+    time.sleep (1)
+    print()
+    print ("Virtupet - Instructions")
+    print()
+    print ("In this game, you are reponsible for caring for your virtual pet. \nYour goal is to keep your pet healthy, happy, and financially supported.")
+    print()
+    time.sleep (2)
+    print ("HOW TO PLAY")
+    print ("------------------------------------")
+    print ("Each day, you can choose to:")
+    print ("1. Take care of your pet")
+    print ("2. Check your financials")
+    print ("3. Buy from the shop")
+    print ("4. Create a savings goal")
+    print ("5. Check the Help Menu")
+    print ("6. Move onto the next day")
+    print ("7. Quit the Game")
+    print ("------------------------------------")
+    print()
+    print ("IMPORTANT RULES")
+    print ("------------------------------------")
+    print ("Keep your pet's health up. Make sure to check on your pet's attributes.")
+    print ("Spend Wisely.")
+    print ("Keep your pet in the best mood possible!")
+    print ("------------------------------------")
+    print()
+    print ("OBJECTIVE")
+    print ("------------------------------------")
+    print ("Stay alive for as long as you can!")
+    print ("Let's become amazing pet owners together!")
+    move_on = input ("Are you ready to move on? (Click any key to move on)")
+    clear_screen()
+    if move_on == str: 
+      return
+
   # Define "Next_Day" function to move onto next day for player
   def Next_Day (self):
+    # global run variable, if false leave game
+    global run
+    if run == False: return
+
     print ("Let's move on to the next day!")
     print ()
 
@@ -338,7 +378,6 @@ class Game():
       clear_screen()
       continue
 
-  
   # Define "Feed" function so pet is fed, update pet coins, expenses, and finances
   def Feed(self, actions):
     pet.pet_hunger += 20/100
@@ -733,10 +772,66 @@ class Game():
         print ("That's too Easy! I know you can do better!")
         continue
   
+  # Function "Pet_Coins_Game" to let user win pet coins after each day
+  def Pet_Coins_Game (self):
+    print ("Let's take a shot at winning some pet coins!")
+
+    # "for" loop used to play game 3 times for player
+    for i in range (3):
+      
+      # Winning number and pet coin amounts using "randint"
+      winning_number = random.randint (1, 3)
+      winning_pet_coins = random.randint (10, 30)
+
+      # While loop for user validation
+      while True:
+
+        # User input of chosen number
+        player_number = input ("Please choose a number from 1-3 to win pet coins from 10-30!")
+
+        # Try and Except to determine if valid input
+        try:
+          player_number = int (player_number)
+
+          # "if, else" conditionals to see if user won or not
+          if player_number == winning_number:
+            print (f"You won {winning_pet_coins} Pet Coins!")
+            self.pet_coins += winning_pet_coins
+
+          else:
+            print ("You lost...")
+
+          break
+
+        except:
+          game.Invalid_Answer()
+          continue
+
+      print (f"Your new Pet Coin balance is {self.pet_coins}!")
+
+    print ()
+
+  # Define "Check_Pet_Coins" function to make sure player doesn't go bankrupt or encourage/alert player's spending habits
+  def Check_Pet_Coins(self):
+
+    # "If, elif" conditionals to use print statements or exit game if player is bankrupt
+    if self.pet_coins <= 0: 
+      print ("You are bankrupt... Be careful with your spending next time. Play a new game to start over!")
+      # global run to access variable
+      global run
+      run = False
+      return False
+    
+    elif self.pet_coins >= 0: print ("Nice Job! You have a lot of coins! Let's continue!")
+    elif self.pet_coins <= 50: print ("Your pet coins are low! You might want to calm down on spending...")
+
   # Define "Help_Menu" function
   def Help_Menu():
+    clear_screen()
     print ("Welcome to the Help Menu! Below there will be 5 FAQ's about our game that will hopefully aid you:")
+    print()
     print ("NOTE: If you would like to add to this game or have any problems, please check out the GitHub Repository at the top of this notebook, thank you!")
+    print()
     # List "questions" to store questions
     questions = ["1. How do I exit after I am done with an option?",
                  "2. What requirements do I need to play this game?",
@@ -759,9 +854,12 @@ class Game():
     print ()
     print ("I hope this was helpful!")
     print ()
-  
+    continue_game = input ("Would you like to continue? (Press any key to continue.)")
+    if continue_game == str: return
+
   # Define "Quit_Game" function
   def Quit_Game():
+    # global run to access variable
     global run
     run = False
     return
@@ -776,6 +874,7 @@ pet = Pet()
 
 # Check if player wants to play and Call functions to start Game
 if game.Game_Start() == True:
+  Game.Instructions()
   pet.Pet_Type()
   pet.Pet_Name()
 
@@ -786,7 +885,9 @@ while run:
   game.Main_Menu()
   if run == False: break
   pet.Lower_Attributes()
+  game.Check_Pet_Coins()
   pet.Display_Pet()
+  game.Pet_Coins_Game()
   game.Next_Day()
 
 # Ending of game
