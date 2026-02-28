@@ -1,3 +1,8 @@
+'''
+GitHub Link: 
+https://github.com/Ishaan-Kuruwa/FBLA-Introtoprogramming-25-26-Pet-Simulator/blob/main/README.md
+'''
+
 # Empty "print" statements will be used to separate lines and make text more readable
 # Importing random library for later use of randomized choices
 import random
@@ -66,19 +71,19 @@ class Pet():
     self.rating = rating_total
 
     # Pet attributes rating using conditional "if, elif" statement
-    if (self.rating > 85):
+    if (self.rating > 0.85):
       # Pet is Happy
       self.mood = "Happy"
 
-    elif (self.rating > 70):
+    elif (self.rating > 0.70):
       # Pet is Tired
       self.mood = "Tired"
 
-    elif (self.rating > 50):
+    elif (self.rating > 0.50):
       # Pet is Sad
       self.mood = "Sad"
 
-    elif (self.rating < 50):
+    elif (self.rating < 0.50):
       # Pet is Angry
       self.mood = "Mad"
 
@@ -146,7 +151,7 @@ class Pet():
     print ('Here are your possible pet options:', player_pet_options)
     print ()
 
-    # Make invalid variable global so can be changed inside function
+    # Make "invalid" variable global, so it can be changed inside function
     global invalid
     while invalid == True:
 
@@ -459,31 +464,26 @@ class Game():
         print ("Be careful, taking care of your pet is very important. See you next time!")
         return
 
-      # "try, except, finally" conditionals used to check valid user input
+      # "try, except" conditionals used to check valid user input
       try:
         player_action_choice = int (player_action_choice)
 
         # Conditionals "if, else" to make sure input was a valid number
-        if 1 <= player_action_choice <= 10:
-          pass
+        if 1 <= player_action_choice <= 5:
+
+          # Conditionals "if, elif" to call function for each possible option 1-5
+          if player_action_choice == 1: game.Feed(actions)
+          elif player_action_choice == 2: game.Play(actions)
+          elif player_action_choice == 3: game.Rest(actions)
+          elif player_action_choice == 4: game.Clean(actions)
+          elif player_action_choice == 5: game.Check_Health(actions)
 
         else:
-          continue
+          self.Invalid_Answer()
 
       except:
         self.Invalid_Answer()
-        continue
-
-      finally:
-        # Conditionals "if, elif" to call function for each possible option 1-10
-        if player_action_choice == 1: game.Feed(actions)
-        elif player_action_choice == 2: game.Play(actions)
-        elif player_action_choice == 3: game.Rest(actions)
-        elif player_action_choice == 4: game.Clean(actions)
-        elif player_action_choice == 5: game.Check_Health(actions)
-
         print (f"Your current Pet Coins amount is {self.pet_coins}. Spend Wisely!")
-        continue
 
   # Define "Cost_Of_Care" function
   def Cost_Of_Care(self):
@@ -830,7 +830,7 @@ class Game():
     clear_screen()
     print ("Welcome to the Help Menu! Below there will be 5 FAQ's about our game that will hopefully aid you:")
     print()
-    print ("NOTE: If you would like to add to this game or have any problems, please check out the GitHub Repository at the top of this notebook, thank you!")
+    print ("NOTE: If you would like to add to this game or have any problems, please check out the GitHub Repository at the top of this File, thank you!")
     print()
     # List "questions" to store questions
     questions = ["1. How do I exit after I am done with an option?",
@@ -841,7 +841,7 @@ class Game():
 
     # List "answer" to store answers to questions
     answers = ["Input 'none' and then press enter on your keyboard, you should return to the main menu of the game",
-              "All you need is the ability to run the cell of this notebook, and to download the images folder into your google drive!",
+              "All you need is the ability to run the code in this File, and to download the images folder into your google drive!",
               "We hope to aid students in learning to take care of a pet, and teach students about the challenges of having a pet in a fun and interactive way!",
               "Yes, we would love for you to contribute to this game and are working on making it open source! Check out our GitHub.",
               "We would recommend challenging your friends, adding more to the game to make it more fun yourself, or even doing your own research on pet care!"]
