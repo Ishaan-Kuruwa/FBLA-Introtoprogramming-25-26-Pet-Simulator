@@ -1,4 +1,5 @@
 **The Libraries used in this project include:**
+*NO TEMPLATES WERE USED IN THIS PROJECT
 
 **Random**
 -   Purpose: Used to make game more interactive through "random" increases in attributes and games
